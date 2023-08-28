@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/Car-Prototype/static/js/main.d94816b5.js",
+    "static/media/car-moving.wav": "/Car-Prototype/static/media/car-moving.94eb341f2a515bfbae62.wav",
+    "static/media/start-engine.wav": "/Car-Prototype/static/media/start-engine.1c4f5103ff70297e7fb6.wav",
+    "static/media/car-open.wav": "/Car-Prototype/static/media/car-open.183fcf40762d596e7d32.wav",
+    "static/media/first-copilot-left-indication.mp3": "/Car-Prototype/static/media/first-copilot-left-indication.ce95935650f29a32c563.mp3",
+    "index.html": "/Car-Prototype/index.html",
+    "main.d94816b5.js.map": "/Car-Prototype/static/js/main.d94816b5.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d94816b5.js"
+  ]
+}
