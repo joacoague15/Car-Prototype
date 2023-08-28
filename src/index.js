@@ -39,7 +39,7 @@ const carMoving = () => {
 const copilotStartTalking = () => {
     const firstCopilotIndication = new Howl({
         src: [firstCopilotLetIndicationSound],
-        onend: () => startHandleSteeringWheel()
+        onend: startHandleSteeringWheel
     });
 
     firstCopilotIndication.play();
@@ -49,14 +49,8 @@ const startHandleSteeringWheel = () => {
     const swipeArea = document.getElementById('swipe-area');
     const hammerManager = new Hammer(swipeArea);
 
-    hammerManager.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_LEFT }));
-
     hammerManager.on('swipeleft', (e) => {
-        const engineSound = new Howl({
-            src: [startEngineSound],
-            onend: () => carMoving()
-        });
-
-        engineSound.play();
+        console.log("SWIPE LEFT");
+        hammerManager.off('swipeleft', e);
     });
 }
