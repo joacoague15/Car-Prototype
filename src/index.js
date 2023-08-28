@@ -52,6 +52,11 @@ const startHandleSteeringWheel = () => {
     hammerManager.add(new Hammer.Swipe({ direction: Hammer.DIRECTION_LEFT }));
 
     hammerManager.on('swipeleft', (e) => {
-        console.log('You swiped left!');
+        const engineSound = new Howl({
+            src: [startEngineSound],
+            onend: () => carMoving()
+        });
+
+        engineSound.play();
     });
 }
