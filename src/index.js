@@ -110,7 +110,6 @@ const insertCasseteAction = () => {
     // Enable vertical swiping
     hammerManager.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     hammerManager.on('swipeup', (e) => {
-        console.log("Swipe up")
         const insertAction = new Howl({
             src: [insertCassetteSound],
             onend: () => playMusic()
