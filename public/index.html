@@ -8,6 +8,7 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <title>Car Prototype</title>
   </head>
   <style>
@@ -37,12 +38,72 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+      .left-arrow {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        color: white;
+        font-size: 60px;
+        opacity: 0.2;
+      }
+
+    .right-arrow {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translate(50%, -50%);
+      cursor: pointer;
+      color: white;
+      font-size: 60px;
+      opacity: 0.2;
+    }
+    .music-icon {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      color: white;
+      font-size: 60px;
+      opacity: 0.2;
+    }
+    #presentation-area {
+      position: absolute;
+      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+    #present-title {
+      background-color: #000000;
+      color: white;
+      padding: 10px 20px;
+      font-size: 36px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
   </style>
   <body>
   <div>
 <!--    <img src="./blind_pilot.jpg" alt="blind-pilot">-->
     <div id="swipe-area">
       <button id="playButton">Entrá al auto</button>
+    </div>
+    <div>
+      <i id="left-icon" class="fa-solid fa-chevron-left left-arrow"></i>
+      <i id="right-icon" class="fa-solid fa-chevron-right right-arrow"></i>
+      <i id="up-icon" class="fa-solid fa-music music-icon" style="color: #ffffff;"></i>
+    </div>
+    <div id="presentation-area">
+      <h1 id="present-title">Feli</h1>
     </div>
   </div>
 

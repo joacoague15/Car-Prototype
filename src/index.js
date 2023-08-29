@@ -16,6 +16,17 @@ import music1 from './sounds/music1.m4a';
 
 import insertCassetteSound from './sounds/insert-cassette.wav';
 
+const changeIconOpacity = (element) => {
+    if (element.style.opacity === '1')
+        element.style.opacity = '0.2';
+    else
+        element.style.opacity = '1';
+}
+
+const leftIcon = document.getElementById('left-icon');
+const rightIcon = document.getElementById('right-icon');
+const upIcon = document.getElementById('up-icon');
+
 document.getElementById('playButton').addEventListener('click', () => {
     const openSound = new Howl({
         src: [openCarSound],
@@ -58,6 +69,7 @@ const copilotStartTalking = () => {
 const startHandleSteeringWheel = () => {
     const swipeArea = document.getElementById('swipe-area');
     const hammerManager = new Hammer(swipeArea);
+    changeIconOpacity(leftIcon);
 
     hammerManager.on('swipeleft', (e) => {
         const turnIndication = new Howl({
@@ -67,6 +79,7 @@ const startHandleSteeringWheel = () => {
         turnIndication.play();
 
         hammerManager.off('swipeleft', e);
+        changeIconOpacity(leftIcon);
         secondCopilotIndication();
     });
 }
@@ -77,6 +90,7 @@ const secondCopilotIndication = () => {
         onend: () => {
             const swipeArea = document.getElementById('swipe-area');
             const hammerManager = new Hammer(swipeArea);
+            changeIconOpacity(rightIcon);
 
             hammerManager.on('swiperight', (e) => {
                 const turnIndication = new Howl({
@@ -86,6 +100,7 @@ const secondCopilotIndication = () => {
                 turnIndication.play();
 
                 hammerManager.off('swiperight', e);
+                changeIconOpacity(rightIcon);
                 copilotAskForCassete();
             });
         }
@@ -106,6 +121,7 @@ const copilotAskForCassete = () => {
 const insertCasseteAction = () => {
     const swipeArea = document.getElementById('swipe-area');
     const hammerManager = new Hammer(swipeArea);
+    changeIconOpacity(upIcon);
 
     // Enable vertical swiping
     hammerManager.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
@@ -117,6 +133,7 @@ const insertCasseteAction = () => {
 
         insertAction.play();
 
+        changeIconOpacity(upIcon);
         hammerManager.off('swipeup', e);
     });
 }
@@ -126,6 +143,72 @@ const playMusic = () => {
         src: [music1],
         loop: true,
     });
+    // showPresentation();
 
     music.play();
+
+            setTimeout(() => {
+                const element = document.getElementById('presentation-area');
+                element.style.display = 'block';
+                secondTimeOut();
+            }, 2100);
+
 }
+
+const secondTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Flo';
+        thirdTimeOut();
+    }, 1100);
+}
+
+const thirdTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Cris';
+        fourthTimeOut();
+    }, 1300);
+}
+
+const fourthTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Yamil';
+        fifthTimeOut();
+    }, 1800);
+}
+
+const fifthTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Joaco';
+        sixthTimeOut();
+    }, 2400);
+}
+
+const sixthTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Presentan';
+        seventhTimeOut();
+    }, 2700);
+}
+
+const seventhTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('present-title');
+        element.innerText = 'Echo Driver';
+        eighthTimeOut();
+    }, 5500);
+}
+
+const eighthTimeOut = () => {
+    setTimeout(() => {
+        const element = document.getElementById('presentation-area');
+        element.style.display = 'none';
+    }, 5000);
+}
+
+playMusic();
+
