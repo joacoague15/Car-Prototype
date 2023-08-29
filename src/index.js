@@ -209,6 +209,3 @@ const eighthTimeOut = () => {
         element.style.display = 'none';
     }, 5000);
 }
-
-playMusic();
-
