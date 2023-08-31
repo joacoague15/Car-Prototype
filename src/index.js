@@ -7,14 +7,23 @@ import carMovingSound from './sounds/car-moving.wav';
 
 import firstCopilotLeftIndicationSound from './sounds/first-copilot-left-indication.mp3';
 import firstCopilotRightIndicationSound from './sounds/first-copilot-right-indication.mp3';
+import secondCopilotRightIndicationSound from './sounds/second-copilot-right-indication.mp3';
+
+import copilotAskToStopSound from './sounds/copilot-ask-to-stop.mp3';
 
 import copilotAskForCassette from './sounds/copilot-ask-for-cassette.mp3';
 
 import turnIndicatorSound from './sounds/turn-indicator.mp3';
 
-import music1 from './sounds/music1.m4a';
+import footstepsSound from './sounds/footsteps.wav';
+import passengerSalutesCopilotSound from './sounds/passenger-salutes-copilot.mp3';
+import copilotSalutesPassengerSound from './sounds/copilot-salutes-passenger.mp3';
+import passengerSalutesProtagonistSound from './sounds/passenger-salutes-protagonist.mp3';
+import handShakeSound from './sounds/hand-shake.mp3';
+import passengerIsReadyToGoSound from './sounds/passenger-is-ready-to-go.mp3';
 
 import insertCassetteSound from './sounds/insert-cassette.wav';
+import music1 from "./sounds/music1.m4a";
 
 const changeIconOpacity = (element) => {
     if (element.style.opacity === '1')
@@ -26,82 +35,263 @@ const changeIconOpacity = (element) => {
 const leftIcon = document.getElementById('left-icon');
 const rightIcon = document.getElementById('right-icon');
 const upIcon = document.getElementById('up-icon');
+const downIcon = document.getElementById('down-icon');
 
-document.getElementById('playButton').addEventListener('click', () => {
-    const openSound = new Howl({
-        src: [openCarSound],
-        onend: () => startEngine()
-    });
+const highFiveIcon = document.getElementById('high-five-icon');
 
-    openSound.play();
-    document.getElementById('playButton').style.display = 'none';
-});
+class CarMoving {
+    constructor(src) {
+        this.sound = new Howl({
+            src: [src],
+            loop: true
+        })
+    }
 
-const startEngine = () => {
-    const engineSound = new Howl({
-        src: [startEngineSound],
-        onend: () => carMoving()
-    });
+    play() {
+        this.sound.play();
+    }
 
-    engineSound.play();
+    fade() {
+        this.sound.fade(1, 0, 3500)
+    }
 }
 
-const carMoving = () => {
-    const movingSound = new Howl({
-        src: [carMovingSound],
-        loop: true,
-    });
+class PresentationSong {
+    constructor(src) {
+        this.sound = new Howl({
+            src: [src],
+        })
+    }
 
-    copilotStartTalking();
+    play() {
+        this.sound.play();
+    }
 
-    movingSound.play();
+    fade() {
+        this.sound.fade(1, 0, 12000);
+    }
 }
 
-const copilotStartTalking = () => {
+const movingSound = new CarMoving(carMovingSound);
+const presentationSong = new PresentationSong(music1);
+
+// document.getElementById('playButton').addEventListener('click', () => {
+//     const openSound = new Howl({
+//         src: [openCarSound],
+//         onend: () => startEngine()
+//     });
+//
+//     openSound.play();
+//     document.getElementById('playButton').style.display = 'none';
+// });
+
+// const startEngine = () => {
+//     const engineSound = new Howl({
+//         src: [startEngineSound],
+//         onend: () => carMoving()
+//     });
+//
+//     engineSound.play();
+// }
+//
+// const carMoving = () => {
+//
+//     copilotStartTalking();
+//
+//     movingSound.play();
+// }
+
+// const copilotStartTalking = () => {
+//     const copilotIndication = new Howl({
+//         src: [firstCopilotLeftIndicationSound],
+//         onend: startHandleSteeringWheel
+//     });
+//
+//     copilotIndication.play();
+// }
+//
+// const startHandleSteeringWheel = () => {
+//     const swipeArea = document.getElementById('swipe-area');
+//     const hammerManager = new Hammer(swipeArea);
+//     changeIconOpacity(leftIcon);
+//
+//     hammerManager.on('swipeleft', (e) => {
+//         const turnIndication = new Howl({
+//             src: [turnIndicatorSound],
+//         });
+//
+//         turnIndication.play();
+//
+//         hammerManager.off('swipeleft', e);
+//         changeIconOpacity(leftIcon);
+//         secondCopilotIndication();
+//     });
+// }
+//
+// const secondCopilotIndication = () => {
+//     const copilotIndication = new Howl({
+//         src: [firstCopilotRightIndicationSound],
+//         onend: () => {
+//             const swipeArea = document.getElementById('swipe-area');
+//             const hammerManager = new Hammer(swipeArea);
+//             changeIconOpacity(rightIcon);
+//
+//             hammerManager.on('swiperight', (e) => {
+//                 const turnIndication = new Howl({
+//                     src: [turnIndicatorSound],
+//                 });
+//
+//                 turnIndication.play();
+//
+//                 hammerManager.off('swiperight', e);
+//                 changeIconOpacity(rightIcon);
+//                 copilotAskForCassete();
+//             });
+//         }
+//     });
+//
+//     copilotIndication.play();
+// }
+//
+// const copilotAskForCassete = () => {
+//     const copilotIndication = new Howl({
+//         src: [copilotAskForCassette],
+//         onend: insertCasseteAction
+//     });
+//
+//     copilotIndication.play();
+// }
+//
+// const insertCasseteAction = () => {
+//     const swipeArea = document.getElementById('swipe-area');
+//     const hammerManager = new Hammer(swipeArea);
+//     changeIconOpacity(upIcon);
+//
+//     // Enable vertical swiping
+//     hammerManager.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+//     hammerManager.on('swipeup', (e) => {
+//         const insertAction = new Howl({
+//             src: [insertCassetteSound],
+//             onend: () => showPresentation()
+//         });
+//
+//         insertAction.play();
+//
+//         changeIconOpacity(upIcon);
+//         hammerManager.off('swipeup', e);
+//     });
+// }
+//
+// const showPresentation = () => {
+//     presentationSong.play();
+//
+//     setTimeout(() => {
+//         const element = document.getElementById('presentation-area');
+//         element.style.display = 'block';
+//         secondTimeOut();
+//     }, 2500);
+//
+// }
+//
+// const secondTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Flo';
+//         thirdTimeOut();
+//     }, 1100);
+// }
+//
+// const thirdTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Cris';
+//         fourthTimeOut();
+//     }, 1300);
+// }
+//
+// const fourthTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Yamil';
+//         fifthTimeOut();
+//     }, 1700);
+// }
+//
+// const fifthTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Joaco';
+//         sixthTimeOut();
+//     }, 2400);
+// }
+//
+// const sixthTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Presentan';
+//         seventhTimeOut();
+//     }, 2800);
+// }
+//
+// const seventhTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('present-title');
+//         element.innerText = 'Echo Driver';
+//         eighthTimeOut();
+//         presentationSong.fade();
+//     }, 5500);
+// }
+//
+// const eighthTimeOut = () => {
+//     setTimeout(() => {
+//         const element = document.getElementById('presentation-area');
+//         element.style.display = 'none';
+//         thirdCopilotIndication();
+//     }, 8000);
+// }
+//
+// const thirdCopilotIndication = () => {
+//     const copilotIndication = new Howl({
+//         src: [secondCopilotRightIndicationSound],
+//         onend: () => {
+//             const swipeArea = document.getElementById('swipe-area');
+//             const hammerManager = new Hammer(swipeArea);
+//             changeIconOpacity(rightIcon);
+//
+//             hammerManager.on('swiperight', (e) => {
+//                 const turnIndication = new Howl({
+//                     src: [turnIndicatorSound],
+//                 });
+//
+//                 turnIndication.play();
+//
+//                 hammerManager.off('swiperight', e);
+//                 changeIconOpacity(rightIcon);
+//                 copilotAskToStop();
+//             });
+//         }
+//     });
+//
+//     copilotIndication.play();
+// }
+
+const copilotAskToStop = () => {
     const copilotIndication = new Howl({
-        src: [firstCopilotLeftIndicationSound],
-        onend: startHandleSteeringWheel
-    });
-
-    copilotIndication.play();
-}
-
-const startHandleSteeringWheel = () => {
-    const swipeArea = document.getElementById('swipe-area');
-    const hammerManager = new Hammer(swipeArea);
-    changeIconOpacity(leftIcon);
-
-    hammerManager.on('swipeleft', (e) => {
-        const turnIndication = new Howl({
-            src: [turnIndicatorSound],
-        });
-
-        turnIndication.play();
-
-        hammerManager.off('swipeleft', e);
-        changeIconOpacity(leftIcon);
-        secondCopilotIndication();
-    });
-}
-
-const secondCopilotIndication = () => {
-    const copilotIndication = new Howl({
-        src: [firstCopilotRightIndicationSound],
+        src: [copilotAskToStopSound],
         onend: () => {
             const swipeArea = document.getElementById('swipe-area');
             const hammerManager = new Hammer(swipeArea);
-            changeIconOpacity(rightIcon);
+            changeIconOpacity(downIcon);
 
-            hammerManager.on('swiperight', (e) => {
-                const turnIndication = new Howl({
-                    src: [turnIndicatorSound],
-                });
+            // Enable vertical swiping
+            hammerManager.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+            hammerManager.on('swipedown', (e) => {
 
-                turnIndication.play();
+                movingSound.fade();
 
-                hammerManager.off('swiperight', e);
-                changeIconOpacity(rightIcon);
-                copilotAskForCassete();
+                hammerManager.off('swipedown', e);
+                changeIconOpacity(downIcon);
+                passengerIsApproaching();
             });
         }
     });
@@ -109,103 +299,78 @@ const secondCopilotIndication = () => {
     copilotIndication.play();
 }
 
-const copilotAskForCassete = () => {
-    const copilotIndication = new Howl({
-        src: [copilotAskForCassette],
-        onend: insertCasseteAction
+copilotAskToStop();
+
+const passengerIsApproaching = () => {
+    const footsteps = new Howl({
+        src: [footstepsSound],
+        onend: () => carDoorOpened()
     });
 
-    copilotIndication.play();
+    footsteps.play();
 }
 
-const insertCasseteAction = () => {
+const carDoorOpened = () => {
+    const openSound = new Howl({
+        src: [openCarSound],
+        onend: () => passengerSalutesCopilot()
+    });
+
+    openSound.play();
+}
+
+const passengerSalutesCopilot = () => {
+    const salute = new Howl({
+        src: [passengerSalutesCopilotSound],
+        onend: () => copilotSalutesPassenger()
+    });
+
+    salute.play();
+}
+
+const copilotSalutesPassenger = () => {
+    const salute = new Howl({
+        src: [copilotSalutesPassengerSound],
+        onend: () => passengerSalutesProtagonist()
+    });
+
+    salute.play();
+}
+
+const passengerSalutesProtagonist = () => {
+    const salute = new Howl({
+        src: [passengerSalutesProtagonistSound],
+        onend: () => handShake()
+    });
+
+    salute.play();
+}
+
+const handShake = () => {
     const swipeArea = document.getElementById('swipe-area');
     const hammerManager = new Hammer(swipeArea);
-    changeIconOpacity(upIcon);
 
-    // Enable vertical swiping
-    hammerManager.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-    hammerManager.on('swipeup', (e) => {
-        const insertAction = new Howl({
-            src: [insertCassetteSound],
-            onend: () => playMusic()
+    highFiveIcon.style.display = 'block';
+
+    hammerManager.on('tap', (e) => {
+        console.log('HAND!')
+        highFiveIcon.style.display = 'none';
+
+        const salute = new Howl({
+            src: [handShakeSound],
         });
 
-        insertAction.play();
+        salute.play();
 
-        changeIconOpacity(upIcon);
-        hammerManager.off('swipeup', e);
+        setTimeout(() => {
+            const letsGo = new Howl({
+                src: [passengerIsReadyToGoSound],
+                onend: () => console.log('LETS GO!')
+            });
+
+            letsGo.play();
+        }, 1000);
+
+        hammerManager.off('tap', e);
     });
-}
-
-const playMusic = () => {
-    const music = new Howl({
-        src: [music1],
-        loop: true,
-    });
-    // showPresentation();
-
-    music.play();
-
-            setTimeout(() => {
-                const element = document.getElementById('presentation-area');
-                element.style.display = 'block';
-                secondTimeOut();
-            }, 2100);
-
-}
-
-const secondTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Flo';
-        thirdTimeOut();
-    }, 1100);
-}
-
-const thirdTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Cris';
-        fourthTimeOut();
-    }, 1300);
-}
-
-const fourthTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Yamil';
-        fifthTimeOut();
-    }, 1800);
-}
-
-const fifthTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Joaco';
-        sixthTimeOut();
-    }, 2400);
-}
-
-const sixthTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Presentan';
-        seventhTimeOut();
-    }, 2700);
-}
-
-const seventhTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('present-title');
-        element.innerText = 'Echo Driver';
-        eighthTimeOut();
-    }, 5500);
-}
-
-const eighthTimeOut = () => {
-    setTimeout(() => {
-        const element = document.getElementById('presentation-area');
-        element.style.display = 'none';
-    }, 5000);
 }
