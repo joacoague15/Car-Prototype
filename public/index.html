@@ -28,7 +28,6 @@
     #playButton {
         background-color: #000000;
         color: white;
-        display: none;
         border: 2px solid white;
         border-radius: 10px;
         padding: 10px 20px;
@@ -70,6 +69,17 @@
       color: white;
       font-size: 60px;
       opacity: 0.2;
+    }
+    .up-icon {
+      position: absolute;
+      top: 10%;
+      display: none;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      color: white;
+      font-size: 60px;
+      opacity: 1;
     }
     .stop-icon {
         position: absolute;
@@ -125,7 +135,8 @@
     <div>
       <i id="left-icon" class="fa-solid fa-chevron-left left-arrow"></i>
       <i id="right-icon" class="fa-solid fa-chevron-right right-arrow"></i>
-      <i id="up-icon" class="fa-solid fa-music music-icon" style="color: #ffffff;"></i>
+      <i id="music-icon" class="fa-solid fa-music music-icon" style="color: #ffffff;"></i>
+      <i id="up-icon" class="fa-solid fa-arrow-up up-icon" style="color: #ffffff;"></i>
       <i id="down-icon" class="fa-solid fa-stop stop-icon" style="color: #ffffff;"></i>
     </div>
     <div id="presentation-area">
