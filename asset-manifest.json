@@ -1,19 +1,28 @@
 {
   "files": {
-    "main.js": "/Car-Prototype/static/js/main.f0f624d0.js",
+    "main.js": "/Car-Prototype/static/js/main.ffe76cc1.js",
     "static/media/car-moving.wav": "/Car-Prototype/static/media/car-moving.94eb341f2a515bfbae62.wav",
+    "static/media/footsteps.wav": "/Car-Prototype/static/media/footsteps.7e35a73c672163442c4a.wav",
     "static/media/start-engine.wav": "/Car-Prototype/static/media/start-engine.1c4f5103ff70297e7fb6.wav",
+    "static/media/car-accelerate.wav": "/Car-Prototype/static/media/car-accelerate.aa33cc5e376b89257f8e.wav",
     "static/media/insert-cassette.wav": "/Car-Prototype/static/media/insert-cassette.05747de7caec20bcc7b6.wav",
     "static/media/music1.m4a": "/Car-Prototype/static/media/music1.f863713e2f5bf347b761.m4a",
     "static/media/car-open.wav": "/Car-Prototype/static/media/car-open.183fcf40762d596e7d32.wav",
     "static/media/first-copilot-right-indication.mp3": "/Car-Prototype/static/media/first-copilot-right-indication.0e1906dbe691e399ac8c.mp3",
     "static/media/turn-indicator.mp3": "/Car-Prototype/static/media/turn-indicator.a3d2921e1bb5cf268310.mp3",
     "static/media/first-copilot-left-indication.mp3": "/Car-Prototype/static/media/first-copilot-left-indication.ce95935650f29a32c563.mp3",
+    "static/media/copilot-salutes-passenger.mp3": "/Car-Prototype/static/media/copilot-salutes-passenger.edf4e91802825388f2bd.mp3",
+    "static/media/hand-shake.mp3": "/Car-Prototype/static/media/hand-shake.43a5089d259677ecf847.mp3",
+    "static/media/second-copilot-right-indication.mp3": "/Car-Prototype/static/media/second-copilot-right-indication.cde190a8cc2a8db86636.mp3",
     "static/media/copilot-ask-for-cassette.mp3": "/Car-Prototype/static/media/copilot-ask-for-cassette.55952c125e1744b2265b.mp3",
+    "static/media/passenger-salutes-protagonist.mp3": "/Car-Prototype/static/media/passenger-salutes-protagonist.14fb1053742956db1ff0.mp3",
+    "static/media/passenger-is-ready-to-go.mp3": "/Car-Prototype/static/media/passenger-is-ready-to-go.940f293e360804352e46.mp3",
+    "static/media/passenger-salutes-copilot.mp3": "/Car-Prototype/static/media/passenger-salutes-copilot.05c94405886c0c09cd77.mp3",
+    "static/media/copilot-ask-to-stop.mp3": "/Car-Prototype/static/media/copilot-ask-to-stop.79d04a80dd1f82e72135.mp3",
     "index.html": "/Car-Prototype/index.html",
-    "main.f0f624d0.js.map": "/Car-Prototype/static/js/main.f0f624d0.js.map"
+    "main.ffe76cc1.js.map": "/Car-Prototype/static/js/main.ffe76cc1.js.map"
   },
   "entrypoints": [
-    "static/js/main.f0f624d0.js"
+    "static/js/main.ffe76cc1.js"
   ]
 }
