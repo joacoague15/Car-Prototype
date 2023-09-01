@@ -392,6 +392,7 @@ const startMovingTheCar = () => {
 
         accelerateAction.play();
 
+        changeIconOpacity(upIcon);
         hammerManager.off('swipeup', e);
     });
 }
